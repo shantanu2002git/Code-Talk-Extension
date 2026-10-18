@@ -51,11 +51,4 @@ Whether you're learning loops, recursion, linked lists, trees, or other DSA conc
 
 Language support depends on the interpreter's implemented features. Reference solutions are available only for selected problems and languages.
 
-## 🤝 Contributions
-
-Contributions, bug reports, and suggestions are welcome. Help improve language support, visualizations, debugging, and the overall learning experience.
-
-## 📄 License
-
-Check the repository for license information before reusing or distributing this project.
 
