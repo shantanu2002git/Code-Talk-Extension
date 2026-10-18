@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Code Talk",
+  "version": "1.0.0",
+  "description": "Step-by-step visualizer for LeetCode and GeeksforGeeks solutions in C++, Java and Python. Runs your code and shows every line, variable and data structure.",
+  "minimum_chrome_version": "114",
+  "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "action": { "default_title": "Code Talk – visualize this problem" },
+  "background": { "service_worker": "background/service-worker.js", "type": "module" },
+  "side_panel": { "default_path": "panel/panel.html" },
+  "permissions": ["sidePanel", "activeTab", "scripting", "storage"],
+  "host_permissions": [
+    "https://leetcode.com/*",
+    "https://www.geeksforgeeks.org/*",
+    "https://practice.geeksforgeeks.org/*"
+  ],
+  "content_security_policy": { "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'" }
+}

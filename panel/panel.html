@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Code Talk</title>
+<link rel="stylesheet" href="panel.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo">▶</span><div><b>Code Talk</b><small id="siteBadge">open a problem page</small></div></div>
+  <button id="btnRefresh" class="ghost" title="Re-read the problem and your code from the page">⟳ Read page</button>
+</header>
+
+<main>
+  <section class="card" id="problemCard">
+    <div class="ptitle" id="pTitle">No problem detected</div>
+    <div class="pmeta" id="pMeta">Open a problem on leetcode.com or geeksforgeeks.org, or paste code below.</div>
+    <details id="descBox"><summary>Problem statement</summary><div id="pDesc" class="desc"></div></details>
+  </section>
+
+  <section class="card controls">
+    <div class="seg" id="modeSeg" role="tablist" aria-label="Mode">
+      <button data-mode="mine" class="on" role="tab">Visualize My Code</button>
+      <button data-mode="correct" role="tab">Visualize Correct Solution</button>
+    </div>
+    <div class="row">
+      <label>Language
+        <select id="langSel"><option value="cpp">C++</option><option value="java">Java</option><option value="python">Python</option><option value="javascript">JavaScript (not traceable yet)</option></select>
+      </label>
+      <label class="grow">Example
+        <select id="exSel"></select>
+      </label>
+    </div>
+    <label class="blk">Code <span id="codeNote" class="note"></span>
+      <textarea id="codeBox" spellcheck="false" rows="9" placeholder="Your code is read from the page automatically. You can also paste or edit it here."></textarea>
+    </label>
+    <label class="blk" id="refBlock" hidden>Correct solution (paste your own reference here to override the bundled one)
+      <textarea id="refBox" spellcheck="false" rows="6"></textarea>
+    </label>
+    <label class="blk">Input <span class="note">name = value, name = value</span>
+      <textarea id="inputBox" spellcheck="false" rows="2" placeholder="nums = [2,7,11,15], target = 9"></textarea>
+    </label>
+    <div class="row">
+      <button id="btnRun" class="primary grow">▶ Visualize</button>
+    </div>
+    <div id="status" class="status" role="status"></div>
+  </section>
+
+  <section class="card cx" id="cxCard" hidden></section>
+
+  <section id="results" hidden>
+    <div id="verdict" class="card verdict"></div>
+
+    <div class="card player">
+      <div class="pbtns">
+        <button id="bReset" title="Reset (Home)">⏮</button>
+        <button id="bPrev" title="Previous (←)">◀</button>
+        <button id="bPlay" class="primary" title="Play / Pause (Space)">▶</button>
+        <button id="bNext" title="Next (→)">▶|</button>
+        <label class="spd">Speed
+          <select id="speedSel"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option><option value="8">8×</option></select>
+        </label>
+      </div>
+      <input id="slider" type="range" min="0" max="0" value="0" aria-label="Step">
+      <div class="stepinfo"><span id="stepNo">Step 0 / 0</span><span id="frameInfo"></span></div>
+    </div>
+
+    <div class="card codecard"><div class="chead"><span id="codeTitle">Code</span><span id="codeSub" class="note"></span></div><div id="codeView" class="codeview" tabindex="0"></div></div>
+
+    <div class="card explain" id="explainCard"></div>
+
+    <div id="hintCards"></div>
+    <div class="card"><div class="chead">Variables <span class="note" id="varNote"></span></div><div id="vars"></div></div>
+    <div class="card" id="callCard" hidden><div class="chead">Recursion call tree <span class="note">click a call to jump to it</span></div><div id="callTree"></div></div>
+    <div class="card" id="stackCard"><div class="chead">Call stack</div><div id="callStack"></div></div>
+    <div class="card" id="outCard" hidden><div class="chead">Printed output</div><pre id="stdout"></pre></div>
+    <div class="card" id="cmpCard" hidden><div class="chead">Your approach vs the correct one</div><div id="cmp"></div></div>
+  </section>
+
+  <section class="card small" id="helpCard">
+    <b>How it works</b>
+    <p>Code Talk <i>runs</i> your code on the input above inside the browser (C++ / Java by a built-in interpreter, Python by CPython compiled to WebAssembly) and records every line executed. Nothing is uploaded anywhere.</p>
+    <p class="note">Shortcuts: Space = play/pause, ← → = step, Home = reset.</p>
+  </section>
+</main>
+<script type="module" src="panel.js"></script>
+</body>
+</html>
